@@ -18,8 +18,8 @@ from django.urls import path
 from django.urls import include, path
 from rest_framework import routers
 
-from cerofilas.tutorial.quickstart import views
-from cerofilas.tutorial.quickstart.views import ListProductos
+from tutorial.quickstart import views
+from tutorial.quickstart.views import ListProductos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
