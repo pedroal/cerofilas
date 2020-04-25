@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include, path
 from rest_framework import routers
-from quickstart import views
+
+from cerofilas.tutorial.quickstart import views
+from cerofilas.tutorial.quickstart.views import ListProductos
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('productos/', ListProductos.as_view()),
 ]
 
 router = routers.DefaultRouter()

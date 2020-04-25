@@ -1,5 +1,8 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer
+
+from cerofilas.tutorial.cerofilas.models import Producto
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -12,3 +15,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+
+class ProductosSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = ('id_producto')
