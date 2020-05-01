@@ -8,6 +8,7 @@ from rest_framework import permissions
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
+from tutorial.quickstart.models import Producto
 from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, ProductosSerializer
 
 
@@ -29,6 +30,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-class ListProductos(ListAPIView):
+class ListProductos(viewsets.ModelViewSet):
+    queryset = Producto.objects.all().order_by( '-date_joined' )
     serializer_class = ProductosSerializer
-    permission_classes = (IsAuthenticated)
+    permission_classes = [permissions.IsAuthenticated]
