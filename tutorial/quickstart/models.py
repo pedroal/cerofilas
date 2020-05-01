@@ -65,6 +65,9 @@ class Producto(models.Model):
     descripcion = models.CharField('descripcion', max_length=100, null=False)
 
 
+    class meta:
+        db_table = 'quickstart_producto'
+
 
 class Pedido(models.Model):
     id_pedido = models.IntegerField('id_pedido', primary_key=True, max_length=4, unique=True)
