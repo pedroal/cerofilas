@@ -19,11 +19,13 @@ from django.urls import include, path
 from rest_framework import routers
 
 from tutorial.quickstart import views
-from tutorial.quickstart.views import ListProductos
+
+"""from tutorial.quickstart import view
+from tutorial.quickstart.views import ListProductos"""
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', ListProductos.as_view()),
+"""" path('productos/', ListProductos.as_view()),"""
 ]
 
 router = routers.DefaultRouter()
@@ -32,7 +34,11 @@ router.register(r'groups', views.GroupViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
+
+
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
+
 ]

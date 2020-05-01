@@ -2,7 +2,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from cerofilas.tutorial.cerofilas.models import Producto
+from tutorial.quickstart.models import Producto
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
