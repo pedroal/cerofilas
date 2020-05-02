@@ -77,7 +77,7 @@ class Pedido(models.Model):
     descripcion = models.CharField('descripcion', max_length=100, null=False)
     fecha = models.DateField('fecha', null=False)
     validez = models.DateField('validez', null=False)
-    monto_total = models.IntegerField('monto_total', max_length=8, null=False)
+    monto_total = models.IntegerField('monto_total', max_length=9, null=False)
 
 
 

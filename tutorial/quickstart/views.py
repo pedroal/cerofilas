@@ -8,8 +8,9 @@ from rest_framework import permissions
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from tutorial.quickstart.models import Producto
-from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, ProductosSerializer
+from tutorial.quickstart.models import Producto, Usuario, Entidad, Comercio, Pedido
+from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, ProductosSerializer, UsuarioSerializer, \
+    EntidadSerializer, ComercioSerializer, PedidoSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -33,4 +34,24 @@ class GroupViewSet(viewsets.ModelViewSet):
 class ListProductos(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductosSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ListUsuarios(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ListEntidades(viewsets.ModelViewSet):
+    queryset = Entidad.objects.all()
+    serializer_class = EntidadSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ListComercios(viewsets.ModelViewSet):
+    queryset = Comercio.objects.all()
+    serializer_class = ComercioSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ListPedidos(viewsets.ModelViewSet):
+    queryset = Pedido.objects.all()
+    serializer_class = PedidoSerializer
     permission_classes = [permissions.IsAuthenticated]
