@@ -48,6 +48,17 @@ class Usuario( models.Model ):
     contraseña = models.CharField( 'contraseña', max_length=50, null=False )
     nacionalidad = models.CharField( 'nacionalidad', max_length=50, null=False )
 
+    def __init__(self, id_usuario=False, mail=None, fecha_nacimiento=None, contraseña=None, nacionalidad=None):
+        self.id_usuario = id_usuario
+        self.mail = mail
+        self.fecha_nacimiento = fecha_nacimiento.strptime( fecha_nacimiento, '%Y-%m-%d' )
+        self.contraseña = contraseña
+        self.nacionalidad = nacionalidad
+
+
+
+
+
 class Comercio( models.Model ):
     id_comercio = models.IntegerField( 'id_comercio', primary_key=True, max_length=4, unique=True )
     id_entidad = models.ForeignKey( Entidad, on_delete=models.PROTECT )
@@ -65,8 +76,6 @@ class Producto(models.Model):
     descripcion = models.CharField('descripcion', max_length=100, null=False)
 
 
-    class meta:
-        db_table = 'quickstart_producto'
 
 
 class Pedido(models.Model):

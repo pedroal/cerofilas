@@ -5,8 +5,10 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from tutorial.quickstart.models import Producto, Usuario, Entidad, Comercio, Pedido
 from tutorial.quickstart.serializers import UserSerializer, GroupSerializer, ProductosSerializer, UsuarioSerializer, \
@@ -20,6 +22,21 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class UsuarioSaveData( APIView ):
+    serializer_class = UsuarioSerializer
+
+    def post(self, request):
+        ser = UsuarioSerializer( data=request.data )
+        ser.is_valid( raise_exception=True )
+        """
+        
+        Create and return a new `Serie` instance, given the validated data.
+        """
+        return Response( Usuario.objects.create( **request ) )
+
+
+
 
 
 class GroupViewSet(viewsets.ModelViewSet):

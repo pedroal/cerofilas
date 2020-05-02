@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
+from rest_framework.response import Response
+from rest_framework.serializers import ModelSerializer, Serializer
 
 from tutorial.quickstart.models import Producto, Usuario, Entidad, Comercio, Pedido
 
@@ -21,10 +22,13 @@ class ProductosSerializer(ModelSerializer):
         model = Producto
         fields = ['id_producto','tipo','precio','descripcion','id_comercio_id']
 
-class UsuarioSerializer(ModelSerializer):
+class UsuarioSerializer(Serializer):
+
     class Meta:
         model = Usuario
         fields = ['id_usuario','mail','fecha_nacimiento','contraseña','nacionalidad']
+
+
 
 class EntidadSerializer(ModelSerializer):
     class Meta:

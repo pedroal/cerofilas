@@ -20,6 +20,7 @@ from django.urls import include, path
 from rest_framework import routers
 
 from tutorial.quickstart import views
+from tutorial.quickstart.views import UsuarioSaveData
 
 """from tutorial.quickstart import view
 from tutorial.quickstart.views import ListProductos"""
@@ -35,7 +36,11 @@ router.register(r'groups', views.GroupViewSet)
 
 
 router.register(r'productos', views.ListProductos)
+
+"""usuarios"""
 router.register(r'usuarios', views.ListUsuarios)
+"""router.register(r'create', UsuarioSaveData.as_view())"""
+
 router.register(r'entidades', views.ListEntidades)
 router.register(r'comercios', views.ListComercios)
 router.register(r'pedidos', views.ListPedidos)
