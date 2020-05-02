@@ -10,7 +10,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['url', 'username', 'email', 'groups']
 
-
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
@@ -28,15 +27,15 @@ class UsuarioSerializer(ModelSerializer):
 
 class EntidadSerializer(ModelSerializer):
     class Meta:
-        model : Entidad
+        model = Entidad
         fields = ['id_entidad','nombre','iibb','calle','numero','piso','departamento']
 
 class ComercioSerializer(ModelSerializer):
     class Meta:
-        model : Comercio
+        model = Comercio
         fields = ['id_comercio','id_entidad','cuit','disponible','razon_social','nombre']
 
 class PedidoSerializer(ModelSerializer):
     class Meta:
-        model : Pedido
+        model = Pedido
         fields = ['id_pedido','id_usuario','id_estado','id_comercio','descripcion','fecha','validez','monto_total']
