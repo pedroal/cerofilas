@@ -4,6 +4,7 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
+from django.shortcuts import get_object_or_404
 
 from rest_framework.generics import ListAPIView, UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
@@ -19,21 +20,12 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.all().order_by( '-date_joined' )
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class UsuarioSaveData( APIView ):
-    serializer_class = UsuarioSerializer
 
-    def post(self, request):
-        ser = UsuarioSerializer( data=request.data )
-        ser.is_valid( raise_exception=True )
-        """
-        
-        Create and return a new `Serie` instance, given the validated data.
-        """
-        return Response( Usuario.objects.create( **request ) )
+
 
 
 

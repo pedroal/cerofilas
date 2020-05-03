@@ -5,9 +5,12 @@ class Pais(models.Model):
     id_pais = models.IntegerField('id_pais', primary_key=True, max_length=4, unique=True)
     nombre = models.CharField('nombre', max_length=1000, null=False)
 
+
+
+
 class Ciudad(models.Model):
     id_pais = models.ForeignKey(Pais,on_delete = models.PROTECT)
-    id_ciudad = models.IntegerField('id_ciudad', primary_key=True, max_length=4, unique=True)
+    id_ciudad = models.IntegerField('id_ciudad', primary_key=True, max_length=5, unique=True)
     nombre = models.CharField('nombre', max_length=1000, null=False)
 
 class Barrio(models.Model):
@@ -41,21 +44,12 @@ class Estado(models.Model):
     id_estado = models.IntegerField('id_estado', primary_key=True, max_length=2, unique=True)
     descripcion = models.CharField('descripcion', max_length=100, null=False)
 
-class Usuario( models.Model ):
-    id_usuario = models.IntegerField( 'id_usuario', primary_key=True, max_length=2, unique=True )
+class Usuario(models.Model ):
+    id_usuario = models.IntegerField( 'id_usuario',primary_key=True, max_length=2, unique=True )
     mail = models.CharField( 'mail', max_length=80, null=False )
     fecha_nacimiento = models.DateField( 'fecha_nacimiento', null=False )
     contraseña = models.CharField( 'contraseña', max_length=50, null=False )
     nacionalidad = models.CharField( 'nacionalidad', max_length=50, null=False )
-
-    def __init__(self, id_usuario=False, mail=None, fecha_nacimiento=None, contraseña=None, nacionalidad=None):
-        self.id_usuario = id_usuario
-        self.mail = mail
-        self.fecha_nacimiento = fecha_nacimiento.strptime( fecha_nacimiento, '%Y-%m-%d' )
-        self.contraseña = contraseña
-        self.nacionalidad = nacionalidad
-
-
 
 
 
